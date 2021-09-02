@@ -1,11 +1,16 @@
 import multer from 'multer'
 import path from 'path'
+import fs from 'fs'
 import crypto from 'crypto'
 import { Request } from 'express'
 
 const settingFile = {
   local: multer.diskStorage({
     destination: (req, file, cb) => {
+      const dir = path.resolve(__dirname, '..', 'album');
+      if(!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+      }
       cb(null, path.resolve(__dirname, '..', 'album'))
     },
     filename: (req, file, cb) => {
