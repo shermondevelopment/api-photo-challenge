@@ -1,0 +1,12 @@
+version: '3'
+services:
+ db:
+  container_name: db-album
+  image: mongo:4.2
+  restart: always
+  ports:
+   - 27017:27017
+  environment: 
+    MONGO_INITDB_DATABASE: 'album'
+    MONGO_INITDB_ROOT_USERNAME: 'admin'
+    MONGO_INITDB_ROOT_PASSWORD: 'admin'
